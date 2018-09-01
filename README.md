@@ -3,7 +3,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/3f293158d55acc67fbf2/maintainability)](https://codeclimate.com/github/tareksamni/primes/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3f293158d55acc67fbf2/test_coverage)](https://codeclimate.com/github/tareksamni/primes/test_coverage)
 
-This is a ruby implementation of Coding Challenge which is listed below in `Coding Challenge` section.
+This is a ruby implementation of Coding Challenge which could be found [here][13].
 The code in this repo is mainly divided into small/simple classes and each class own its responsibilities, errors, constants, state and behaviour as follows:
 
 + [`PrimesGenerator`][1] is responsible for generating N primes.
@@ -123,3 +123,4 @@ rspec
 [10]: https://docs.docker.com/docker-for-mac/install/
 [11]: https://rvm.io/rvm/install
 [12]: http://codeclimate.com/
+[13]: https://github.com/tareksamni/primes/blob/master/CHALLENGE.md
