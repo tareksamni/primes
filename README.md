@@ -17,6 +17,10 @@ For ex. you can code a `json` formatter that saves a json format of the table in
 
 This project is following `TDD` so [specs][4] could be found [here][5].
 
+## Example run
+
+[![EXAMPLE](https://github.com/tareksamni/primes/raw/master/assets/example.png)](https://github.com/tareksamni/primes)
+
 ## Setup & Run
 
 This project is using:
