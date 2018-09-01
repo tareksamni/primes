@@ -41,21 +41,21 @@ run `docker --version` to make sure that docker is installed and running success
 + Build docker image from source
 
 ```shell
-docker build . -t primes:latest_git_commit_sha
+docker build . -t primes:$(git rev-parse HEAD)
 ```
-
-where `latest_git_commit_sha` is the git current checked out git commit SHA.
 
 + Run the application on a docker container
 
 ```shell
-docker run primes:target_git_commit_sha ./run
+docker run primes:$(git rev-parse HEAD) # default 10
+#or
+docker run primes:$(git rev-parse HEAD) ./run 15
 ```
 
 + Run tests on a docker container
 
 ```shell
-docker run primes:target_git_commit_sha rspec
+docker run primes:$(git rev-parse HEAD) rspec
 ```
 
 ## Using Docker (Pull from docker hub)
@@ -67,13 +67,17 @@ run `docker --version` to make sure that docker is installed and running success
 + Run the application on a docker container
 
 ```shell
-docker run tareksamni/primes:target_git_commit_sha ./run
+# Make sure that the tag is already exisiting on:
+# https://hub.docker.com/r/tareksamni/primes/tags/
+docker run tareksamni/primes:$(git rev-parse HEAD) # default 10
+# or
+docker run tareksamni/primes:$(git rev-parse HEAD) ./run 15
 ```
 
 + Run tests on a docker container
 
 ```shell
-docker run tareksamni/primes:target_git_commit_sha rspec
+docker run tareksamni/primes:$(git rev-parse HEAD) rspec
 ```
 
 ## Without Docker
