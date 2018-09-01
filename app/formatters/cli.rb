@@ -9,7 +9,7 @@ module Formatters
     end
 
     def format
-      Terminal::Table.new(title: 'Primes Multiplications',rows: @matrix.to_a)
+      Terminal::Table.new(title: 'Primes Multiplications', rows: @matrix.to_a)
     end
   end
 end
