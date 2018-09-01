@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 require './autoload'
-puts (ARGV[0] or 'Hello World')
+primes = Primes::Generator.new.generate(ARGV.fetch(0, 10).to_i)
+calculator = Calculators::Multiplication.new(primes)
+# Formatters::CLI.new(primes, calculator.matrix).display

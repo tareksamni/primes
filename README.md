@@ -7,11 +7,11 @@
 This is a ruby implementation of Coding Challenge which could be found [here][13].
 The code in this repo is mainly divided into small/simple classes and each class own its responsibilities, errors, constants, state and behaviour as follows:
 
-+ [`PrimesGenerator`][1] is responsible for generating N primes.
++ [`Primes::Generator`][1] is responsible for generating N primes.
 
-+ [`Matrix::Calculator`][2] is responsible for calculating a 2D array (matrix) of multiplications of a given set of primes. It's easy to integrate other calculators into the system and switch between them.
++ [`Calculators::Multiplication`][2] is responsible for calculating a 2D array (matrix) of multiplications of a given set of primes. It's easy to integrate other calculators into the system and switch between them.
 
-+ [`Matrix::Formatter`][3] is responsible for printing any given 2D array as a table to the `STDOUT`. It's easy to integrate other formatter into the system and switch between them.
++ [`Formatters::CLI`][3] is responsible for printing any given 2D array as a table to the `STDOUT`. It's easy to integrate other formatter into the system and switch between them.
 
 For ex. you can code a `json` formatter that saves a json format of the table instead of printing it to the `STDOUT`.
 
@@ -112,9 +112,9 @@ run
 rspec
 ```
 
-[1]: https://github.com/tareksamni/primes
-[2]: https://github.com/tareksamni/primes
-[3]: https://github.com/tareksamni/primes
+[1]: https://github.com/tareksamni/primes/blob/master/app/primes/generator.rb
+[2]: https://github.com/tareksamni/primes/blob/master/app/calculators/multiplication.rb
+[3]: https://github.com/tareksamni/primes/blob/master/app/formatters/cli.rb
 [4]: http://rspec.info/
 [5]: https://github.com/tareksamni/primes/tree/master/spec
 [6]: https://github.com/tareksamni/primes/blob/master/Gemfile
