@@ -1,0 +1,101 @@
+defaults: &defaults
+  working_directory: /app
+  docker:
+    - image: docker:latest
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Login to docker hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Build docker image
+          command: docker build -t "tareksamni/primes:${CIRCLE_SHA1}" .
+      - run:
+          name: Create docker-image cache dir
+          command: mkdir -p /app/docker-image
+      - run:
+          name: Cache built docker image
+          command: docker image save --output "docker-image/${CIRCLE_SHA1}" "tareksamni/primes:${CIRCLE_SHA1}"
+      - persist_to_workspace:
+          root: docker-image
+          paths:
+            - "*"
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Login to docker hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Load previously built docker image
+          command: docker image load --input "workspace/${CIRCLE_SHA1}"
+      - run:
+          name: Rubocop
+          command: docker run tareksamni/primes:${CIRCLE_SHA1} rubocop
+  test:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: workspace
+    - setup_remote_docker:
+        docker_layer_caching: true
+    - run:
+        name: Login to docker hub
+        command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - run:
+        name: Load previously built docker image
+        command: docker image load --input "workspace/${CIRCLE_SHA1}"
+    - run:
+        name: Run Rspecs
+        command: >
+            docker run
+            --env CIRCLECI=${CIRCLECI}
+            --env CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN
+            --env CIRCLE_BRANCH=${CIRCLE_BRANCH}
+            tareksamni/primes:${CIRCLE_SHA1}
+            /bin/bash -c "bundle exec rspec && bundle exec codeclimate-test-reporter"
+  docker_push:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: workspace
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Login to docker hub
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Load previously built docker image
+          command: docker image load --input "workspace/${CIRCLE_SHA1}"
+      - run:
+          name: Push docker image
+          command: docker push "tareksamni/primes:${CIRCLE_SHA1}"
+
+workflows:
+  version: 2
+  build_and_push_docker_image:
+    jobs:
+      - build
+      - lint:
+          requires:
+              - build
+      - test:
+          requires:
+              - lint
+              - build
+      - docker_push:
+          requires:
+            - build
+            - lint
+            - test
