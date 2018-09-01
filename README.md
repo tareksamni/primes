@@ -62,13 +62,13 @@ run `docker --version` to make sure that docker is installed and running success
 + Run the application on a docker container
 
 ```shell
-docker run -it tareksamni/primes:latest "run"
+docker run -it tareksamni/primes:target_git_commit_sha "run"
 ```
 
 + Run tests on a docker container
 
 ```shell
-docker run -it tareksamni/primes:latest "rspec"
+docker run -it tareksamni/primes:target_git_commit_sha "rspec"
 ```
 
 ## Without Docker
