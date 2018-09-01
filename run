@@ -2,4 +2,4 @@
 require './autoload'
 primes = Primes::Generator.new.generate(ARGV.fetch(0, 10).to_i)
 calculator = Calculators::Multiplication.new(primes)
-# Formatters::CLI.new(primes, calculator.matrix).display
+puts Formatters::CLI.new(calculator.matrix).format

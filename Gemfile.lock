@@ -41,6 +41,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.4.0)
 
 PLATFORMS
@@ -51,6 +53,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   rspec
   rubocop (~> 0.58.2)
+  terminal-table
 
 RUBY VERSION
    ruby 2.5.1p57
