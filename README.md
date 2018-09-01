@@ -111,7 +111,9 @@ bundle install
 + Run application
 
 ```shell
-run
+./run # default 10
+# or
+./run 15
 ```
 
 + Run tests
