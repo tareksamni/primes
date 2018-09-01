@@ -1,5 +1,6 @@
 # Primes table generator
 
+[![CircleCI](https://circleci.com/gh/tareksamni/primes.svg?style=svg)](https://circleci.com/gh/tareksamni/primes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3f293158d55acc67fbf2/maintainability)](https://codeclimate.com/github/tareksamni/primes/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3f293158d55acc67fbf2/test_coverage)](https://codeclimate.com/github/tareksamni/primes/test_coverage)
 
