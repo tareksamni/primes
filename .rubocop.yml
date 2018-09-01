@@ -6,3 +6,7 @@ Style/BlockComments:
 
 Metrics/BlockLength:
   Enabled: false
+
+AllCops:
+  Exclude:
+    - 'run'
