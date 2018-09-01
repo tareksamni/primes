@@ -49,13 +49,13 @@ where `latest_git_commit_sha` is the git current checked out git commit SHA.
 + Run the application on a docker container
 
 ```shell
-docker run -it primes:target_git_commit_sha "run"
+docker run primes:target_git_commit_sha ./run
 ```
 
 + Run tests on a docker container
 
 ```shell
-docker run -it primes:target_git_commit_sha "rspec"
+docker run primes:target_git_commit_sha rspec
 ```
 
 ## Using Docker (Pull from docker hub)
@@ -67,13 +67,13 @@ run `docker --version` to make sure that docker is installed and running success
 + Run the application on a docker container
 
 ```shell
-docker run -it tareksamni/primes:target_git_commit_sha "run"
+docker run tareksamni/primes:target_git_commit_sha ./run
 ```
 
 + Run tests on a docker container
 
 ```shell
-docker run -it tareksamni/primes:target_git_commit_sha "rspec"
+docker run tareksamni/primes:target_git_commit_sha rspec
 ```
 
 ## Without Docker
