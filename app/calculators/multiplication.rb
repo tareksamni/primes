@@ -2,10 +2,9 @@
 
 module Calculators
   class Multiplication < Base
-
     private
 
-    def calculate(x, y)
+    def calculate(x, y) # rubocop:disable Naming/UncommunicativeMethodParamName
       x * y
     end
   end

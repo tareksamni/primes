@@ -16,7 +16,7 @@ module Calculators
 
     private
 
-    def calculate(x, y)
+    def calculate(_, _) # rubocop:disable Naming/UncommunicativeMethodParamName
       raise(NotImplementedError)
     end
 
