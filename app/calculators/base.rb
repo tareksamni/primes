@@ -9,8 +9,16 @@ module Calculators
     end
 
     def matrix
-      @matrix ||= Matrix.build(size, size) do |row, col|
-        calculate(@array[row], @array[col])
+      @matrix ||= Matrix.build(size + 1, size + 1) do |row, col|
+        if row.zero? && col.zero?
+          nil
+        elsif row.zero?
+          @array[col - 1]
+        elsif col.zero?
+          @array[row - 1]
+        else
+          calculate(@array[row - 1], @array[col - 1])
+        end
       end
     end
 

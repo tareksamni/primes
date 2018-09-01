@@ -29,16 +29,16 @@ describe Calculators::Multiplication do
       subject.matrix # won't calculate again, already cached
     end
 
-    it 'should return a matrix with 5 rows' do
+    it 'should return a matrix with 6 rows' do
       expect(
         subject.matrix.row_size
-      ).to be(size)
+      ).to be(size + 1)
     end
 
-    it 'should return a matrix with 5 columns' do
+    it 'should return a matrix with 6 columns' do
       expect(
         subject.matrix.column_size
-      ).to be(size)
+      ).to be(size + 1)
     end
   end
 
