@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'Matrix'
+require 'matrix'
 
 module Calculators
   class Base
