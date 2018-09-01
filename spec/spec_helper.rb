@@ -105,3 +105,5 @@ end
 
 SimpleCov.coverage_dir('coverage')
 SimpleCov.start
+
+require './autoload'
